@@ -17,11 +17,19 @@ class LandingPageController extends Controller{
 			$data['content'] = "";
 		 
 			if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
-				$numOfLines = split("\n", $_REQUEST['content']);
-				if (count($numOfLines) > 2){
+				$splitContent = split("\n", $_REQUEST['content']);
+				if (count($splitContent) > 50){
 					$data['textAreaError'] = true;
 					$data['title'] = $_REQUEST['title'];
 					$data['content'] = $_REQUEST['content'];
+				}
+				foreach ($splitContent as $singleLine){
+					if (strlen($singleLine) > 80){
+						$data['textAreaError'] = true;
+						$data['title'] = $_REQUEST['title'];
+						$data['content'] = $_REQUEST['content'];
+						break;
+					}
 				}
 			}
 
