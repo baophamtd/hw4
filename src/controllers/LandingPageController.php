@@ -12,9 +12,16 @@ class LandingPageController extends Controller{
     }
     
     function processRequest() {
+			$data = [];
+		 
+			if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
+				$numOfLines = split("\n", $_REQUEST['content']);
+				if (count($numOfLines) > 50){
+					$data['textAreaError'] = true;
+				}
+			}
 
             $view = new B\views\LandingPageView();
-            $data = 0;
             $view->render($data);
             
     }
