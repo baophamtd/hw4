@@ -26,7 +26,7 @@ class LandingPageView extends View{
             <input type = "text" id = "title" name = "title" value = "">
             </br>
             <br>
-            <textarea name = "content" id = "content" rows="10" cols="50"></textarea>
+            <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1','Coordinate 2'"></textarea>
             </br>
             <input type="submit" value="Share"/>
             </div>
