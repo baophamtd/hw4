@@ -24,10 +24,11 @@ class LandingPageView extends View{
             <br>
 			<form action='index.php' method='get'>
             <label for = "title">Chart Title: </label>
-            <input type = "text" id = "title" name = "title" value = "">
+            <input type = "text" id = "title" name = "title" value = <?=$data['title']?>>
             </br>
             <br>
-            <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1','Coordinate 2'"></textarea>
+            <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1','Coordinate 2'
+One value per line, up to 50 lines of at most 80 characters"><?=$data['content']?></textarea>
             </br>
             <input type="submit" value="Share"/>
 			</form>
