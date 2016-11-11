@@ -18,13 +18,13 @@ class LandingPageController extends Controller{
 		 
 			if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 				$splitContent = split("\n", $_REQUEST['content']);
-				if (count($splitContent) > 50){
+				if (count($splitContent) > 2){
 					$data['textAreaError'] = true;
 					$data['title'] = $_REQUEST['title'];
 					$data['content'] = $_REQUEST['content'];
 				}
 				foreach ($splitContent as $singleLine){
-					if (strlen($singleLine) > 80){
+					if (strlen($singleLine) > 10){
 						$data['textAreaError'] = true;
 						$data['title'] = $_REQUEST['title'];
 						$data['content'] = $_REQUEST['content'];
