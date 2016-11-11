@@ -9,6 +9,8 @@ define("NS_BASE", "threemuskateers\\hw4\\");
 
 define(NS_BASE . "NS_CONTROLLERS", "threemuskateers\\hw4\\controllers\\");
 
+$controller_name = NS_CONTROLLERS . "LandingPageController";
+
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = split("\n", $_REQUEST['content']);
 	if (count($splitContent) <= 2){
@@ -18,9 +20,6 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 			}
 		}
 	}
-}
-else{
-	$controller_name = NS_CONTROLLERS . "LandingPageController";
 }
 $controller = new $controller_name();
 $controller->processRequest();
