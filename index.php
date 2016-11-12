@@ -13,10 +13,16 @@ $controller_name = NS_CONTROLLERS . "LandingPageController";
 
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = split("\n", $_REQUEST['content']);
-	if (count($splitContent) <= 2){
+	// Checks if there are more than 50 lines
+	if (count($splitContent) <= 50){
 		foreach ($splitContent as $singleLine){
-			if (strlen($singleLine) <= 10){
-				$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+			// Checks if each line has more than 80 characters
+			if (strlen($singleLine) <= 80){
+				$splitLine = split(",", $singleLine);
+				// Checks if each line has 2 commas
+				if (count($splitLine) == 3){
+					$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+				}
 			}
 		}
 	}

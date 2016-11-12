@@ -13,6 +13,7 @@ class LineGraphPageController extends Controller{
     
     function processRequest() {
 			$data = [];
+			$data['md5Hash'] = md5($_REQUEST['title']);
             $view = new B\views\LineGraphPageView();
             $view->render($data);
             

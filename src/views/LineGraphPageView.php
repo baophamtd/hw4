@@ -14,12 +14,12 @@ class LineGraphPageView extends View{
     <!DOCTYPE html>
     <html>
         <head>
-            <title><?=md5($_REQUEST['title']) ?> LineGraph - PasteChart</title>
+            <title><?=$data['md5Hash'] ?> LineGraph - PasteChart</title>
             <link rel="stylesheet" type="text/css" href="./src/styles/landing_page.css"/>
         <head>
         <body>
             <div class = "centered" >
-            <h1><?=md5($_REQUEST['title']) ?> LineGraph - PasteChart</h1>
+            <h1><?=$data['md5Hash'] ?> LineGraph - PasteChart</h1>
             
         </body>
     </html>
