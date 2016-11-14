@@ -22,7 +22,9 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 				$splitLine = split(",", $singleLine);
 				// Checks if each line has 2 commas
 				if (count($splitLine) == 3){
-					$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+					if (!empty(reset($splitLine))){
+						$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+					}
 				}
 			}
 		}

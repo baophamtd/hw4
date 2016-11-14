@@ -47,6 +47,14 @@ class LandingPageView extends View{
 				return false;
 			}
 		}
+		// Checks if the first coordinate is nonempty
+		for (var i = 0; i < splitContent.length; i++){
+			var splitComma = splitContent[i].split(",");
+			if (!splitComma[0]){
+				setMessage();
+				return false;
+			}
+		}
 	}
 </script>
             <title>PasteChart</title>
