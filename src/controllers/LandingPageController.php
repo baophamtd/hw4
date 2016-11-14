@@ -17,7 +17,7 @@ class LandingPageController extends Controller{
 			$data['content'] = "";
 		 
 			if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
-				$splitContent = split("\n", $_REQUEST['content']);
+				$splitContent = explode("\n", $_REQUEST['content']);
 				// Checks if there are more than 50 lines
 				if (count($splitContent) > 50){
 					$data['textAreaError'] = true;
@@ -33,7 +33,7 @@ class LandingPageController extends Controller{
 						break;
 					}
 					// Checks if each line has 2 commas
-					else if (count(split(",", $singleLine)) != 3){
+					else if (count(explode(",", $singleLine)) != 3){
 						$data['textAreaError'] = true;
 						$data['title'] = $_REQUEST['title'];
 						$data['content'] = $_REQUEST['content'];

@@ -10,14 +10,25 @@ class LandingPageView extends View{
     }
     
     public function render($data){
+      print_r($data['content']);
     ?>
+    
     <!DOCTYPE html>
     <html>
         <head>
             <title>PasteChart</title>
             <link rel="stylesheet" type="text/css" href="./src/styles/landing_page.css"/>
+            <style type="text/css">
+#board{
+	width: 500px;
+	height: 500px;
+	border: 1px solid #000000;
+}
+
+</style>
         <head>
         <body>
+
             <div class = "centered" >
             <h1>PasteChart</h1>
             <h3>Share your data in charts!</h3>
@@ -46,6 +57,7 @@ One value per line, up to 50 lines of at most 80 characters"><?=$data['content']
 				}
 			?>
             </div>
+           
         </body>
     </html>
     <?php
