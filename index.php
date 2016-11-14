@@ -11,6 +11,7 @@ define(NS_BASE . "NS_CONTROLLERS", "threemuskateers\\hw4\\controllers\\");
 
 $controller_name = NS_CONTROLLERS . "LandingPageController";
 
+// Checks from the serverside
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = split("\n", $_REQUEST['content']);
 	// Checks if there are more than 50 lines
@@ -27,6 +28,7 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 		}
 	}
 }
+echo "<script>textareaCheck();</script>";
 $controller = new $controller_name();
 $controller->processRequest();
 
