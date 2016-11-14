@@ -1,4 +1,8 @@
 Assigned to: Cassidy Tarng
 Create the basic outline of the Line graph page
 
-Currently the page will redirect to the line graph page if certain requirements are met. Working on the rest of the requirements
+-Convert all php code checking to javascript
+DONE
+
+-Currently the page will redirect to the line graph page if certain requirements are met. Working on the rest of the requirements
+DONE

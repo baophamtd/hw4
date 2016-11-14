@@ -11,6 +11,7 @@ define(NS_BASE . "NS_CONTROLLERS", "threemuskateers\\hw4\\controllers\\");
 
 $controller_name = NS_CONTROLLERS . "LandingPageController";
 
+// Checks from the serverside
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = explode("\n", $_REQUEST['content']);
 	// Checks if there are more than 50 lines
@@ -21,12 +22,15 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 				$splitLine = explode(",", $singleLine);
 				// Checks if each line has 2 commas
 				if (count($splitLine) == 3){
-					$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+					if (!empty(reset($splitLine))){
+						$controller_name = NS_CONTROLLERS . "LineGraphPageController";
+					}
 				}
 			}
 		}
 	}
 }
+echo "<script>textareaCheck();</script>";
 $controller = new $controller_name();
 $controller->processRequest();
 
