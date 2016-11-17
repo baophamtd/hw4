@@ -22,7 +22,6 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 				$splitLine = explode(",", $singleLine);
 				// Checks if each line has 1 - 5 coordinates
 				if (count($splitLine) >= 2 && count($splitLine) <= 6){
-					// Checks if the first element is empty
 					if (!empty(reset($splitLine))){
 						$controller_name = NS_CONTROLLERS . "LineGraphPageController";
 					}

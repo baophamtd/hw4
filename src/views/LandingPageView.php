@@ -10,6 +10,7 @@ class LandingPageView extends View{
     }
     
     public function render($data){
+      print_r($data['content']);
     ?>
     
     <!DOCTYPE html>
