@@ -32,8 +32,8 @@ class LandingPageController extends Controller{
 						$data['content'] = $_REQUEST['content'];
 						break;
 					}
-					// Checks if each line has 2 commas
-					else if (count(explode(",", $singleLine)) != 3){
+					// Checks if each line has 1 - 5 coordinates
+					else if (count(explode(",", $singleLine)) < 2 || count(explode(",", $singleLine)) > 6){
 						$data['textAreaError'] = true;
 						$data['title'] = $_REQUEST['title'];
 						$data['content'] = $_REQUEST['content'];

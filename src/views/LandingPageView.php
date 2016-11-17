@@ -41,10 +41,10 @@ class LandingPageView extends View{
 				return false;
 			}
 		}
-		// Checks if there are 2 commas in each line
+		// Checks if there are atleast 1 but no more than 5 coordinates
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
-			if (splitComma.length != 3){
+			if (splitComma.length < 2 || splitComma.length > 6){
 				setMessage();
 				return false;
 			}
@@ -81,7 +81,7 @@ class LandingPageView extends View{
             <input type = "text" id = "title" name = "title">
             </br>
             <br>
-            <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1','Coordinate 2'
+            <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1',...,'Coordinate 5'
 One value per line, up to 50 lines of at most 80 characters"></textarea>
             </br>
             <input type="submit" value="Share"/>
