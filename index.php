@@ -13,6 +13,8 @@ $controller_name = NS_CONTROLLERS . "LandingPageController";
 
 $array = array();
 $data = array();
+
+
 // Checks from the serverside
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = explode("\n", $_REQUEST['content']);
@@ -40,6 +42,8 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 		}
 	}
 }
+
+$_REQUEST['array'] = $array;
 //echo "<script>textareaCheck();</script>";
 $controller = new $controller_name();
 $controller->processRequest();
