@@ -30,7 +30,7 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 		}
 	}
 }
-echo "<script>textareaCheck();</script>";
+//echo "<script>textareaCheck();</script>";
 $controller = new $controller_name();
 $controller->processRequest();
 
