@@ -20,7 +20,22 @@ class LineGraphPageView extends View{
         <body>
             <div class = "centered" >
             <h1><?=$data['md5Hash'] ?> LineGraph - PasteChart</h1>
-            
+            <script type="text/javascript" src="chart.js"></script>
+            <script type="text/javascript">
+if (typeof window.testFileIsLoaded == 'undefined') {
+    console.log("File is not loaded");
+}
+
+var values = [100, 300, 200];
+var values2 = [242, 450, 640];
+var values3 = [223, 350, 620];
+
+var graph = new Chart("board",
+    {"Jan":values, "Feb":values2, "March":values3}, 
+    {"title":"Test Chart - Month v Value"});
+console.log("ran");
+//graph.draw();
+</script>
         </body>
     </html>
     <?php

@@ -1,0 +1,8 @@
+Extract the simpletest folder into the main folder hw4.
+
+The main folder should contain the following sub folders:
+
+issues
+simpletest
+src
+temp
