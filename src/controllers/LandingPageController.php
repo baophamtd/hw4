@@ -46,7 +46,7 @@ class LandingPageController extends Controller{
 			$data['content'] = "";
 		 
 			if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
-				if (!didCheckPass($_REQUEST['title'], $_REQUEST['content'])){
+				if (!$this->didCheckPass($_REQUEST['title'], $_REQUEST['content'])){
 					$data['textAreaError'] = true;
 					$data['title'] = $_REQUEST['title'];
 					$data['content'] = $_REQUEST['content'];

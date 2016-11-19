@@ -10,9 +10,8 @@ class LineGraphPageView extends View{
     }
     
     public function render($data){
-    print_r($_REQUEST['array']);
-    $array = $_REQUEST['array'];
-    $data = json_encode($array);
+    
+    $input = json_encode($data['array']);
     
     ?>
 <!DOCTYPE html>
@@ -282,10 +281,9 @@ var values = [100, 300, 200];
 var values2 = [242, 450, 640];
 var values3 = [223, 350, 620];
 
-var data = '<?php echo $data;?>';
-    var json = JSON.parse(data);
+var data = '<?php echo $input;?>';
+var json = JSON.parse(data);  
 
-    
 var graph = new Chart("board",
     json, 
     {"title":"Test Chart - Month v Value"});

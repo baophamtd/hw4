@@ -12,8 +12,28 @@ class LineGraphPageController extends Controller{
     }
     
     function processRequest() {
-			$data = [];
+        $array = array();
+        $data = array();
+
+        $splitContent = explode("\n", $_REQUEST['content']);
+
+        foreach ($splitContent as $singleLine){
+	        $splitLine = explode(",", $singleLine);
+	        $index = 1;
+	        while($index < count($splitLine)){
+	            $splitLine[$index]= str_replace("\r", '', $splitLine[$index]); // remove carriage returns
+
+		        array_push($data,$splitLine[$index]);
+		        $index = $index + 1;
+	        }
+	        $array[$splitLine[0]] = $data;
+	        $data = array();
+        }
+
+
+			$data = array();
 			$data['md5Hash'] = md5($_REQUEST['title']);
+			$data['array'] = $array;
             $view = new B\views\LineGraphPageView();
             $view->render($data);
             
