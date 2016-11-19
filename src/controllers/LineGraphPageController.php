@@ -17,12 +17,14 @@ class LineGraphPageController extends Controller{
 
         $splitContent = explode("\n", $_REQUEST['content']);
 
+
         foreach ($splitContent as $singleLine){
 	        $splitLine = explode(",", $singleLine);
+	        $singleLine = trim($singleLine);
 	        $index = 1;
 	        while($index < count($splitLine)){
 	            $splitLine[$index]= str_replace("\r", '', $splitLine[$index]); // remove carriage returns
-
+	           
 		        array_push($data,$splitLine[$index]);
 		        $index = $index + 1;
 	        }

@@ -32,20 +32,24 @@ class LandingPageView extends View{
 		// Checks if there's more than 50 lines
 		if (splitContent.length > 50){
 			setMessage();
+			console.log("OLA1");
 			return false;
 		}
 		// Checks if there's more than 80 characters per line
 		for (var i = 0; i < splitContent.length; i++){
 			if (splitContent[i].length > 80){
 				setMessage();
+				console.log("OLA2");
 				return false;
 			}
 		}
-		// Checks if there are atleast 1 but no more than 5 coordinates
+		// Checks if there are at least 1 but no more than 5 coordinates
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
+			console.log(splitComma);
 			if (splitComma.length < 2 || splitComma.length > 6){
 				setMessage();
+				console.log("OLA3");
 				return false;
 			}
 		}
@@ -54,6 +58,7 @@ class LandingPageView extends View{
 			var splitComma = splitContent[i].split(",");
 			if (!splitComma[0]){
 				setMessage();
+				console.log("OLA4");
 				return false;
 			}
 		}

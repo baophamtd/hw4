@@ -12,7 +12,6 @@
  * @param Object (optional) properties override values for any of the
  *      properties listed in the property_defaults variable below
  */
-var testFileIsLoaded = true; 
 function Chart(chart_id, data)
 {
     var self = this;
@@ -42,7 +41,6 @@ function Chart(chart_id, data)
             // CSS styles to apply to title text
         'type' : 'LineGraph', // currently, can be either a LineGraph or
             //PointGraph
-        'histo' : 'Histogram',        
         'width' : 500 //width of area to draw into in pixels
     };
     for (var property_key in property_defaults) {
@@ -71,8 +69,7 @@ function Chart(chart_id, data)
      */
     p.draw = function()
     {
-        //self['draw' + self.type]();
-        self['draw' + self.histo]();
+        self['draw' + self.type]();
     }
     /**
      * Used to store in fields the min and max y values as well as the start
@@ -244,42 +241,7 @@ function Chart(chart_id, data)
             currentY = currentY + 1;
             }
         }
-    
-    p.drawHistogram = function(){
-
-        self.drawPointGraph();
-        self.drawColumns();
-    }  
-
-    p.drawColumns = function(){
-
-        var colors = [];
-        for(i = 0; i < data[key].length; i++){
-            colors[i] = getRandomColor();
-        }
-        var c = context;
-        c.beginPath();
-        var dx = (self.width - 2*self.x_padding) /
-            (Object.keys(data).length - 1);
-        //console.log(self.height);
-        var x = self.x_padding;
-        var height = self.height - self.y_padding;
-        for (key in data) {
-            var colorIndex = 0;
-            for(index in data[key]){
-                y = height * (1 - (data[key][index] - self.min_value)/self.range);
-                c.fillStyle = colors[colorIndex];
-
-                c.fillRect(x,height,10,y-height);
-                //console.log(data[key][index]);
-                x = x +15;
-                colorIndex ++;
-            }
-            x += dx - dx/data[key].length;
-        }
         
-    } 
-
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
