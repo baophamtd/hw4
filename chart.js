@@ -198,7 +198,7 @@ function Chart(chart_id, data)
      */
     p.drawLineGraph = function()
     {
-        var counter = Object.keys(data)[1].length;
+        var counter = Object.keys(data)[0].length;
 
         for(i = counter; i>=0; i--){
 
