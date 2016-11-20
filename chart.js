@@ -14,7 +14,6 @@
  */
 function Chart(chart_id, data)
 {
-    document.write("here");
 
     var self = this;
     var p = Chart.prototype;

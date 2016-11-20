@@ -6,3 +6,8 @@ issues
 simpletest
 src
 temp
+
+Then run the file unitTest.php by visting the following:
+localhost/hw4/unitTest.php
+
+Or wherever the path is for your environment

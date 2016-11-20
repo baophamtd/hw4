@@ -1,0 +1,4 @@
+Assigned to: Kareem Darkazanli
+Make the chart.js file working including histogram, line graphs, etc.
+
+In Progress
