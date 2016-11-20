@@ -14,7 +14,6 @@
  */
 function Chart(chart_id, data)
 {
-
     var self = this;
     var p = Chart.prototype;
     var properties = (typeof arguments[2] !== 'undefined') ?
@@ -168,9 +167,8 @@ function Chart(chart_id, data)
     /**
      * Draws a chart consisting of just x-y plots of points in data.
      */
-    p.drawPointGraph = function()
-    {        
-
+    p.drawPointGraph = function(n)
+    {
         self.initMinMaxRange();
         self.renderAxes();
         var dx = (self.width - 2*self.x_padding) /
@@ -181,29 +179,18 @@ function Chart(chart_id, data)
         c.fillStyle = self.data_color;
         var height = self.height - self.y_padding - self.tick_length;
         var x = self.x_padding;
-        var currentY = 0;
-        while(currentY < 5)
-        {
+        document.write(self.max_value);
+
         for (key in data) {
-            for(index in data[key]){
-            if(index == currentY){
                 y = self.tick_length + height *
-                    (1 - (data[key][index] - self.min_value)/self.range);
+                    (1 - (data[key][n] - self.min_value)/self.range);
                 self.plotPoint(x, y);
-                }
-            }
+                console.log(n);
             
             x += dx;
         }
-            var color = getRandomColor();
-            c.strokeStyle = color;
-            c.fillStyle = color;   
-            c.stroke();
-            c = context;
-            c.beginPath();
-            x = self.x_padding;
-            currentY = currentY + 1;
-            }
+        c.strokeStyle = self.changeColor();
+        c.fillStyle = self.changeColor();
     }
     /**
      * Draws a chart consisting of x-y plots of points in data, each adjacent
@@ -211,8 +198,11 @@ function Chart(chart_id, data)
      */
     p.drawLineGraph = function()
     {
-        self.drawPointGraph();
+        var counter = Object.keys(data)[1].length;
 
+        for(i = counter; i>=0; i--){
+
+        self.drawPointGraph(i);
         var c = context;
         c.beginPath();
         var x = self.x_padding;
@@ -221,31 +211,18 @@ function Chart(chart_id, data)
         var height = self.height - self.y_padding  - self.tick_length;
         c.moveTo(x, self.tick_length + height * (1 -
             (data[self.start] - self.min_value)/self.range));
-        var currentY = 0;
-        while(currentY < 5)
-        {
         for (key in data) {
-            for(index in data[key]){
-                    if(index == currentY){
-                        y = self.tick_length + height * 
-                        (1 - (data[key][index] - self.min_value)/self.range);
-                        c.lineTo(x, y);
-                    }
-                   
-                } 
-                x += dx;
-            }
+            y = self.tick_length + height * 
+                (1 - (data[key][i] - self.min_value)/self.range);
+            c.lineTo(x, y);
+            x += dx;
 
-            c.strokeStyle = getRandomColor();   
-            c.stroke();
-            c = context;
-            c.beginPath();
-            x = self.x_padding;
-            currentY = currentY + 1;
-            }
         }
-        
-    function getRandomColor() {
+        c.stroke();
+    }
+    }
+
+    p.changeColor = function() {
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++ ) {
@@ -253,5 +230,4 @@ function Chart(chart_id, data)
         }
         return color;
     }
-
 }

@@ -1,0 +1,4 @@
+<!ELEMENT Chart (X-value*)>
+<!ELEMENT X-value (Value+)>
+<!ATTLIST X-value Label CDATA #REQUIRED>
+<!ELEMENT Value (#PCDATA)>
