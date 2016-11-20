@@ -19,19 +19,21 @@ class LandingPageController extends Controller{
 				return false;
 			}
 			foreach ($splitContent as $singleLine){
-				$splitContent = explode(",", $singleLine);
-				// Checks if each line has more than 80 characters
-				if (strlen($singleLine) > 80){
-					return false;
-				}
-				// Checks if each line has 1 - 5 coordinates
-				else if (count($splitContent) < 2 || count($splitContent) > 6){
-					return false;
-				}
-				// Checks if the first split is empty
-				else if (empty(reset($splitContent))){
-					return false;
-				}
+				//if(strlen(trim($singleLine)) > 0){
+				    $splitContent = explode(",", $singleLine);
+				    // Checks if each line has more than 80 characters
+				    if (strlen($singleLine) > 80){
+					    return false;
+				    }
+				    // Checks if each line has 1 - 5 coordinates
+				    else if (count($splitContent) < 2 || count($splitContent) > 6){
+					    return false;
+				    }
+				    // Checks if the first split is empty
+				    else if (empty(reset($splitContent))){
+					    return false;
+				    }
+				//}
 			}
 			return true;
 		}

@@ -14,6 +14,8 @@
  */
 function Chart(chart_id, data)
 {
+    document.write("here");
+
     var self = this;
     var p = Chart.prototype;
     var properties = (typeof arguments[2] !== 'undefined') ?
@@ -168,7 +170,8 @@ function Chart(chart_id, data)
      * Draws a chart consisting of just x-y plots of points in data.
      */
     p.drawPointGraph = function()
-    {
+    {        
+
         self.initMinMaxRange();
         self.renderAxes();
         var dx = (self.width - 2*self.x_padding) /
@@ -210,6 +213,7 @@ function Chart(chart_id, data)
     p.drawLineGraph = function()
     {
         self.drawPointGraph();
+
         var c = context;
         c.beginPath();
         var x = self.x_padding;

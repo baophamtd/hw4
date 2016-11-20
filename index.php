@@ -18,27 +18,27 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	// Checks if there are more than 50 lines
 	if (count($splitContent) <= 50){
 		foreach ($splitContent as $singleLine){
-			// Checks if each line has less than 80 characters
-			if (strlen($singleLine) <= 80){
-				$splitLine = explode(",", $singleLine);
-				$index = 1;
-				while($index < count($splitLine)){
-				    $index = $index + 1;
-				}
-				// Checks if each line has 2 commas
-				if (count($splitLine) == 3){
-					if (!empty(reset($splitLine))){
-						$controller_name = NS_CONTROLLERS . "LineGraphPageController";
-					}
-				}
-			}
+			//if(strlen(trim($singleLine)) > 0){
+			    // Checks if each line has less than 80 characters
+			    if (strlen($singleLine) <= 80){
+				    $splitLine = explode(",", $singleLine);
+				    $index = 1;
+				    while($index < count($splitLine)){
+				        $index = $index + 1;
+				    }
+				    // Checks if each line has 2 commas
+				    if (count($splitLine) > 1 && count($splitLine) < 7){
+					    if (!empty(reset($splitLine))){
+						    $controller_name = NS_CONTROLLERS . "LineGraphPageController";
+						    echo "Index.php, Here";
+					    }
+				    }
+			    }
+			//}
 		}
 	}
 }
 
-
-
-//echo "<script>textareaCheck();</script>";
 $controller = new $controller_name();
 $controller->processRequest();
 

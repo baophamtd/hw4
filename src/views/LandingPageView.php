@@ -43,25 +43,31 @@ class LandingPageView extends View{
 				return false;
 			}
 		}
+
 		// Checks if there are at least 1 but no more than 5 coordinates
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
 			console.log(splitComma);
-			if (splitComma.length < 2 || splitComma.length > 6){
-				setMessage();
-				console.log("OLA3");
-				return false;
+	        if(strlen(trim($singleLine)) > 0){
+			    if (splitComma.length < 2 || splitComma.length > 6){
+				    setMessage();
+				    console.log("OLA3");
+				    return false;
+			    }
 			}
 		}
 		// Checks if the first coordinate is nonempty
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
-			if (!splitComma[0]){
-				setMessage();
-				console.log("OLA4");
-				return false;
-			}
+			if(strlen(trim($singleLine)) > 0){
+			    if (!splitComma[0]){
+				    setMessage();
+				    console.log("OLA4");
+				    return false;
+			    }
+		    }
 		}
+	
 	}
 </script>
             <title>PasteChart</title>
