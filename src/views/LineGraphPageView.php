@@ -46,20 +46,18 @@ for (var key in json) {
 
 var graph = new Chart("board",
     json, 
-<<<<<<< HEAD
     {"title":"Test Chart - Month v Value"}); 
     var display = '<?php echo $data["display"];?>'
-    if(display == "LineGraph")   
-        graph.draw();
-    else if(display == "PointGraph")
-        var counter = Object.keys(data)[0].length;
-        graph.drawPointGraph(counter);
+    if(display == "LineGraph"){   
+        graph.draw("LineGraph");
+    }
+    else if(display == "PointGraph"){
+        graph.draw("PointGraph");
+    }
+    else if(display == "Histogram"){
+        graph.draw("Histogram");
+    }
 
-=======
-    {"title":"Test Chart - Month v Value"});
-//graph.draw("LineGraph");
-graph.draw("Histogram");
->>>>>>> ea0e950cdfb7aa781e2c035052553e108a3156e9
 </script>
 <script type="text/javascript">
 </script>
