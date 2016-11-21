@@ -15,6 +15,10 @@ $controller_name = NS_CONTROLLERS . "LandingPageController";
 if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = explode("\n", $_REQUEST['content']);
 	// Checks if there are more than 50 lines
+	if (count($splitContent) > 50){
+		return false;
+	}
+	// Checks if there are more than 50 lines
 	if (count($splitContent) <= 50){
 		foreach ($splitContent as $singleLine){
 			//if(strlen(trim($singleLine)) > 0){
@@ -33,7 +37,6 @@ if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 					    }
 				    }
 			    }
-			//}
 		}
 	}
 }

@@ -28,6 +28,12 @@ class LandingPageView extends View{
 	function textareaCheck(){
 		var content = document.forms["myForm"]["content"].value;
 		var splitContent = content.split("\n");
+		// Ignores empty lines
+		for (var i = 0; i < splitContent.length; i++){
+			if (splitContent[i].trim() == ""){
+				array.splice(splitContent[i], 1);
+			}
+		}
 		// Checks if there's more than 50 lines
 		if (splitContent.length > 50){
 			setMessage();
