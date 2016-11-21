@@ -48,6 +48,10 @@ var display = '<?php echo $data["display"];?>'
 if(display == "json"){
         document.write('<?php echo $data["content"];?>');
     }
+else if(display == "jsonp"){
+    document.write('<?php echo $data["arg3"];?>(<?php echo $data["content"];?>);');
+
+    }
     else{
 var graph = new Chart("board",
     json, 
@@ -65,14 +69,14 @@ var graph = new Chart("board",
     
 
 </script>
-<script type="text/javascript">
-</script>
 </div>
 <div>
 
 </div>
 
 </div>
+<p>Share your chart and data at the URLs below:</p>
+<p></p>
 <p>As a LineGraph:</p>
 <p>localhost/hw4/index.php?c=chart&a=show&arg1=LineGraph&arg2=<?=$data['md5Hash'] ?></p>
 <p>As a PointGraph:</p>
@@ -84,7 +88,7 @@ var graph = new Chart("board",
 <p>As JSON data:</p>
 <p>localhost/hw4/index.php?c=chart&a=show&arg1=json&arg2=<?=$data['md5Hash'] ?></p>
 <p>As JSONP data:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=jsonp&arg2=<?=$data['md5Hash'] ?>&arg3=javascript_callback</p>
+<p>localhost/hw4/index.php?c=chart&a=show&arg1=jsonp&arg2=<?=$data['md5Hash'] ?>&arg3=foo</p>
         </body>
     </html>
     <?php

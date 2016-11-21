@@ -49,7 +49,16 @@ class LineGraphPageController extends Controller{
 			    $input = json_encode($data['array']);
 			    $data['content'] = $input;
 				$data['display'] = $_REQUEST['arg1'];
-			    $this->chartModel->saveChartData($data['md5Hash'], $data['title'], $_REQUEST['content']);
+				if(isset($_REQUEST['arg3']) && !empty($_REQUEST['arg3'])){
+					$data['arg3'] = $_REQUEST['arg3'];
+				}
+				else{
+					$data['arg3'] = "";
+
+				}
+				
+			    $this->chartModel->saveChartData($data['md5Hash'], $data['title'], $_REQUEST['content']);?>			    
+                <?php
 			}
 			else
 			{
@@ -89,9 +98,14 @@ class LineGraphPageController extends Controller{
 			    $data['md5Hash'] = $temp['md5Hash'];
 			    $data['title'] = $temp['title'];
 			    $data['display'] = $_REQUEST['arg1'];
+                if(isset($_REQUEST['arg3']) && !empty($_REQUEST['arg3'])){
+					$data['arg3'] = $_REQUEST['arg3'];
+				}
+				else{
+					$data['arg3'] = "";
 
+				}
 				
-
 			}
 			
             $view = new B\views\LineGraphPageView();
