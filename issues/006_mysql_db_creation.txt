@@ -1,0 +1,7 @@
+Assigned to: Kareem Darkazanli
+Create a MySQL db
+DONE
+Create a model class and connect to db
+DONE
+Create Select and Insert method
+DONE

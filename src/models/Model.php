@@ -13,7 +13,7 @@ abstract class Model {
     */
     public function connectToDB() {
         //Establish connection to database
-        $this->connection = mysqli_connect("localhost","root","mypassword");
+        $this->connection = mysqli_connect("localhost","root","");
 
         // Create database
         //Check connection was successful

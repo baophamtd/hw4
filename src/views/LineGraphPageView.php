@@ -1,5 +1,6 @@
 <?php
 namespace threemuskateers\hw4\views;
+
 require 'vendor/autoload.php';
 
 
@@ -43,11 +44,14 @@ for (var key in json) {
         json[key][value] = parseFloat(json[key][value]);
    }
 }
-
+var display = '<?php echo $data["display"];?>'
+if(display == "json"){
+        document.write('<?php echo $data["content"];?>');
+    }
+    else{
 var graph = new Chart("board",
     json, 
-    {"title":"Test Chart - Month v Value"}); 
-    var display = '<?php echo $data["display"];?>'
+    {"title":'<?php echo $data["title"];?>'}); 
     if(display == "LineGraph"){   
         graph.draw("LineGraph");
     }
@@ -57,6 +61,8 @@ var graph = new Chart("board",
     else if(display == "Histogram"){
         graph.draw("Histogram");
     }
+    }
+    
 
 </script>
 <script type="text/javascript">
@@ -73,6 +79,12 @@ var graph = new Chart("board",
 <p>localhost/hw4/index.php?c=chart&a=show&arg1=PointGraph&arg2=<?=$data['md5Hash'] ?></p>
 <p>As a Histogram:</p>
 <p>localhost/hw4/index.php?c=chart&a=show&arg1=Histogram&arg2=<?=$data['md5Hash'] ?></p>
+<p>As XML data:</p>
+<p>localhost/hw4/index.php?c=chart&a=show&arg1=xml&arg2=<?=$data['md5Hash'] ?></p>
+<p>As JSON data:</p>
+<p>localhost/hw4/index.php?c=chart&a=show&arg1=json&arg2=<?=$data['md5Hash'] ?></p>
+<p>As JSONP data:</p>
+<p>localhost/hw4/index.php?c=chart&a=show&arg1=jsonp&arg2=<?=$data['md5Hash'] ?>&arg3=javascript_callback</p>
         </body>
     </html>
     <?php
