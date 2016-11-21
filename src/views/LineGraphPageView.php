@@ -78,17 +78,17 @@ var graph = new Chart("board",
 <p>Share your chart and data at the URLs below:</p>
 <p></p>
 <p>As a LineGraph:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=LineGraph&arg2=<?=$data['md5Hash'] ?></p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=LineGraph&arg2=<?=$data['md5Hash'] ?></p>
 <p>As a PointGraph:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=PointGraph&arg2=<?=$data['md5Hash'] ?></p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=PointGraph&arg2=<?=$data['md5Hash'] ?></p>
 <p>As a Histogram:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=Histogram&arg2=<?=$data['md5Hash'] ?></p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=Histogram&arg2=<?=$data['md5Hash'] ?></p>
 <p>As XML data:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=xml&arg2=<?=$data['md5Hash'] ?></p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=xml&arg2=<?=$data['md5Hash'] ?></p>
 <p>As JSON data:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=json&arg2=<?=$data['md5Hash'] ?></p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=json&arg2=<?=$data['md5Hash'] ?></p>
 <p>As JSONP data:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=jsonp&arg2=<?=$data['md5Hash'] ?>&arg3=foo</p>
+<p><?php echo BASE_URL;?>c=chart&a=show&arg1=jsonp&arg2=<?=$data['md5Hash'] ?>&arg3=foo</p>
         </body>
     </html>
     <?php
