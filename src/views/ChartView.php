@@ -3,7 +3,7 @@ namespace threemuskateers\hw4\views;
 require_once "View.php";
 
 
-class LineGraphPageView extends View{
+class ChartView extends View{
 
     public function __construct(){
     
@@ -11,33 +11,27 @@ class LineGraphPageView extends View{
     
     public function render($data){
     
+    $input = json_encode($data['array']);
     ?>
     <!DOCTYPE html>
     <html>
         <head>
             <title><?=$data['md5Hash'] ?> LineGraph - PasteChart</title>
             <link rel="stylesheet" type="text/css" href="./src/styles/landing_page.css"/>
-             <style type="text/css">
-#board{
-	width: 800px;
-	height: 800px;
-	border: 1px solid #000000;
-}
-
-</style>
         <head>
-        <body>
+        <body id="board">
             <div class = "centered" >
             <h1><?=$data['md5Hash'] ?> LineGraph - PasteChart</h1>
-            <div id="board">
             <script type="text/javascript" src="chart.js"></script>
             <script type="text/javascript">
 if (typeof window.testFileIsLoaded == 'undefined') {
     console.log("File is not loaded");
 }
 
-var data = '<?php echo $data["content"];?>';
+var data = '<?php echo $input;?>';
+//console.log(data);
 var json = JSON.parse(data);  
+//console.log(json);
 for (var key in json) {
    for(var value in json[key]){
         json[key][value] = parseInt(json[key][value]);
@@ -46,29 +40,15 @@ for (var key in json) {
 
 var graph = new Chart("board",
     json, 
-    {"title":"Test Chart - Month v Value"}); 
-    var display = '<?php echo $data["display"];?>'
-    if(display == "LineGraph")   
+    {"title":"Test Chart - Month v Value"});
+    var typeOfGraph = '<?php echo $data["typeOfGraph"];?>';
+    if(typeOfGraph == "PointGraph"){
+        graph.drawPointGraph();
+    }
+    else{
         graph.draw();
-    else if(display == "PointGraph")
-        var counter = Object.keys(data)[0].length;
-        graph.drawPointGraph(counter);
-
+    }
 </script>
-<script type="text/javascript">
-</script>
-</div>
-<div>
-
-</div>
-
-</div>
-<p>As a LineGraph:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=LineGraph&arg2=<?=$data['md5Hash'] ?></p>
-<p>As a PointGraph:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=PointGraph&arg2=<?=$data['md5Hash'] ?></p>
-<p>As a Histogram:</p>
-<p>localhost/hw4/index.php?c=chart&a=show&arg1=Histogram&arg2=<?=$data['md5Hash'] ?></p>
         </body>
     </html>
     <?php

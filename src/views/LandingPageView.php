@@ -10,7 +10,6 @@ class LandingPageView extends View{
     }
     
     public function render($data){
-      print_r($data['content']);
     ?>
     
     <!DOCTYPE html>
@@ -81,7 +80,7 @@ class LandingPageView extends View{
 
 </style>
         <head>
-        <body>
+        <body class = "centered">
 
             <div class = "centered" >
             <h1>PasteChart</h1>
@@ -90,8 +89,11 @@ class LandingPageView extends View{
 			<form name="myForm" action='index.php' method='get' onsubmit="return textareaCheck()">
             <label for = "title">Chart Title: </label>
             <input type = "text" id = "title" name = "title">
+            <input type="hidden" name="arg1" value="LineGraph">
+
             </br>
             <br>
+            
             <textarea name = "content" id = "content" rows="10" cols="50" placeholder="'Text Label','Coordinate 1',...,'Coordinate 5'
 One value per line, up to 50 lines of at most 80 characters"></textarea>
             </br>

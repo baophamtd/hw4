@@ -179,7 +179,6 @@ function Chart(chart_id, data)
         c.fillStyle = self.data_color;
         var height = self.height - self.y_padding - self.tick_length;
         var x = self.x_padding;
-        document.write(self.max_value);
 
         for (key in data) {
                 y = self.tick_length + height *
@@ -198,6 +197,7 @@ function Chart(chart_id, data)
      */
     p.drawLineGraph = function()
     {
+
         var counter = Object.keys(data)[0].length;
 
         for(i = counter; i>=0; i--){
