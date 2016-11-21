@@ -2,7 +2,7 @@
 
 namespace threemuskateers\hw4\models;
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 class ChartModel extends Model {
 

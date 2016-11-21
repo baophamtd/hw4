@@ -1,7 +1,7 @@
 <?php
 
 namespace threemuskateers\hw4\configs;
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 //Establish connection to database
 $conn = mysqli_connect(DEFHOST,"root", "");
