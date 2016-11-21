@@ -2,8 +2,7 @@
 namespace threemuskateers\hw4;
 session_start();
 
-require_once "src/controllers/LandingPageController.php";
-require_once "src/controllers/LineGraphPageController.php";
+require 'vendor/autoload.php';
 
 define("NS_BASE", "threemuskateers\\hw4\\");
 

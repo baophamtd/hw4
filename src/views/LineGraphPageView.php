@@ -1,6 +1,6 @@
 <?php
 namespace threemuskateers\hw4\views;
-require_once "View.php";
+require 'vendor/autoload.php';
 
 
 class LineGraphPageView extends View{
