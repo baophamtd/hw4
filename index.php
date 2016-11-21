@@ -2,7 +2,7 @@
 namespace threemuskateers\hw4;
 session_start();
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 define("NS_BASE", "threemuskateers\\hw4\\");
 

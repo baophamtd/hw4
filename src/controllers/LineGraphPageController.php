@@ -1,7 +1,7 @@
 <?php
 
 namespace threemuskateers\hw4\controllers;
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 use threemuskateers\hw4 as B;
 
 class LineGraphPageController extends Controller{

@@ -1,7 +1,7 @@
 <?php
 use threemuskateers\hw4\controllers;
-require_once(dirname(__FILE__) . '/vendor/simpletest/simpletest/autorun.php');
-require 'vendor/autoload.php';
+require_once(dirname(__FILE__) . '/../vendor/simpletest/simpletest/autorun.php');
+require_once '../vendor/autoload.php';
 
 class TestOfLogging extends UnitTestCase {
     function __construct() {

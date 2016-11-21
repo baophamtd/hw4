@@ -1,6 +1,6 @@
 <?php
 namespace threemuskateers\hw4\views;
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 
 class LandingPageView extends View{
