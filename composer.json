@@ -11,7 +11,7 @@
 			"src/views/View.php",
 			"src/views/LandingPageView.php",
 			"src/views/LineGraphPageView.php",
-			"src/views/ChartView.php",
+			"src/models/Model.php",
 			"src/models/ChartModel.php",
 			"src/configs/Config.php",
 			"src/controllers/ChartController.php"
