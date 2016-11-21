@@ -5,6 +5,7 @@ session_start();
 require_once "src/controllers/LandingPageController.php";
 require_once "src/controllers/LineGraphPageController.php";
 require_once "src/controllers/ChartController.php";
+require 'vendor/autoload.php';
 
 define("NS_BASE", "threemuskateers\\hw4\\");
 
@@ -18,6 +19,12 @@ if(isset($_REQUEST['c']) && $_REQUEST['c'] == "chart" && isset($_REQUEST['a']) &
 // Checks from the serverside
 else if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 	$splitContent = explode("\n", $_REQUEST['content']);
+	// Ignores empty lines
+	foreach ($splitContent as $split){
+		if (trim($split) == ""){
+			unset($split);
+		}
+	}
 	// Checks if there are more than 50 lines
 	if (count($splitContent) <= 50){
 		foreach ($splitContent as $singleLine){
@@ -36,7 +43,6 @@ else if (isset($_REQUEST['title']) && isset($_REQUEST['content'])){
 					    }
 				    }
 			    }
-			//}
 		}
 	}
 }

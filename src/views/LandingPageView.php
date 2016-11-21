@@ -1,6 +1,6 @@
 <?php
 namespace threemuskateers\hw4\views;
-require_once "View.php";
+require 'vendor/autoload.php';
 
 
 class LandingPageView extends View{
@@ -28,6 +28,12 @@ class LandingPageView extends View{
 	function textareaCheck(){
 		var content = document.forms["myForm"]["content"].value;
 		var splitContent = content.split("\n");
+		// Ignores empty lines
+		for (var i = 0; i < splitContent.length; i++){
+			if (splitContent[i].trim() == ""){
+				array.splice(splitContent[i], 1);
+			}
+		}
 		// Checks if there's more than 50 lines
 		if (splitContent.length > 50){
 			setMessage();
@@ -47,24 +53,20 @@ class LandingPageView extends View{
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
 			console.log(splitComma);
-	        if(strlen(trim($singleLine)) > 0){
 			    if (splitComma.length < 2 || splitComma.length > 6){
 				    setMessage();
 				    console.log("OLA3");
 				    return false;
-			    }
 			}
 		}
 		// Checks if the first coordinate is nonempty
 		for (var i = 0; i < splitContent.length; i++){
 			var splitComma = splitContent[i].split(",");
-			if(strlen(trim($singleLine)) > 0){
 			    if (!splitComma[0]){
 				    setMessage();
 				    console.log("OLA4");
 				    return false;
 			    }
-		    }
 		}
 	
 	}

@@ -1,0 +1,6 @@
+Assigned to: Cassidy Tarng
+Create the composer json file
+DONE
+
+-Incorporate the autoload into the project
+DONE

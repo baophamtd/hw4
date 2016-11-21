@@ -1,8 +1,7 @@
 <?php
 
 namespace threemuskateers\hw4\controllers;
-require_once("Controller.php");
-require_once("src/views/LandingPageView.php");
+require 'vendor/autoload.php';
 use threemuskateers\hw4 as B;
 
 class LandingPageController extends Controller{
@@ -14,6 +13,12 @@ class LandingPageController extends Controller{
 	function didCheckPass($title, $content){
 		if (isset($title) && isset($content)){
 			$splitContent = explode("\n", $content);
+			// Ignores empty lines
+			foreach ($splitContent as $split){
+				if (trim($split) == ""){
+					unset($split);
+				}
+			}
 			// Checks if there are more than 50 lines
 			if (count($splitContent) > 50){
 				return false;
