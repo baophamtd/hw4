@@ -13,8 +13,7 @@
 			"src/views/LineGraphPageView.php",
 			"src/models/Model.php",
 			"src/models/ChartModel.php",
-			"src/configs/Config.php",
-			"src/controllers/ChartController.php"
+			"src/configs/Config.php"
 		]
 	}
 }
