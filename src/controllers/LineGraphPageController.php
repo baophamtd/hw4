@@ -1,14 +1,7 @@
 <?php
 
 namespace threemuskateers\hw4\controllers;
-<<<<<<< HEAD
-require_once("Controller.php");
-require_once("src/views/LineGraphPageView.php");
-require_once("src/models/ChartModel.php");
-
-=======
 require 'vendor/autoload.php';
->>>>>>> d5efd7663b58510e9fcf6ba3dfa47a4c58520eb5
 use threemuskateers\hw4 as B;
 
 class LineGraphPageController extends Controller{

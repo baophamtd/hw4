@@ -1,8 +1,7 @@
 <?php
 
 namespace threemuskateers\hw4\controllers;
-require_once("Controller.php");
-require_once("src/views/ChartView.php");
+require 'vendor/autoload.php';
 use threemuskateers\hw4 as B;
 
 class ChartController extends Controller{
