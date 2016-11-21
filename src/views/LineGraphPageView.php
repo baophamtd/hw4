@@ -34,14 +34,15 @@ var json = JSON.parse(data);
 //console.log(json);
 for (var key in json) {
    for(var value in json[key]){
-        json[key][value] = parseInt(json[key][value]);
+        json[key][value] = parseFloat(json[key][value]);
    }
 }
 
 var graph = new Chart("board",
     json, 
     {"title":"Test Chart - Month v Value"});
-graph.draw();
+//graph.draw("LineGraph");
+graph.draw("Histogram");
 </script>
         </body>
     </html>

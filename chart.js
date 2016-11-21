@@ -41,7 +41,7 @@ function Chart(chart_id, data)
             // CSS styles to apply to title text
         'type' : 'LineGraph', // currently, can be either a LineGraph or
             //PointGraph
-        'width' : 500 //width of area to draw into in pixels
+        'width' : 700 //width of area to draw into in pixels
     };
     for (var property_key in property_defaults) {
         if (typeof properties[property_key] !== 'undefined') {
@@ -67,9 +67,16 @@ function Chart(chart_id, data)
     /**
      * Main function used to draw the graph type selected
      */
-    p.draw = function()
+    p.draw = function(type)
     {
-        self['draw' + self.type]();
+        if(type == "PointGraph"){
+            var counter = Object.keys(data)[0].length;
+            for(i = counter; i>=0; i--){
+              self.drawPointGraph(i);
+            }
+        }else{
+            self['draw' + type]();
+        }
     }
     /**
      * Used to store in fields the min and max y values as well as the start
@@ -164,6 +171,62 @@ function Chart(chart_id, data)
             
         }
     }
+
+    /**
+     * Draws the x and y axes for the histogram as well as ticks marks and values
+     */
+    p.renderHistoGramAxes = function(barWidth, numOfBars)
+    {
+        var c = context;
+        var height = self.height - self.y_padding;
+        c.strokeStyle = self.axes_color;
+        c.lineWidth = self.line_width;
+        c.beginPath();
+        c.moveTo(self.x_padding - self.tick_length,
+            self.height - self.y_padding);
+        c.lineTo(self.width + barWidth*numOfBars,  height);  // x axis
+        c.stroke();
+        c.beginPath();
+        c.moveTo(self.x_padding, self.tick_length);
+        c.lineTo(self.x_padding, self.height - self.y_padding +
+            self.tick_length);  // y axis
+        c.stroke();
+        var spacing_y = self.range/self.ticks_y;
+        height -= self.tick_length;
+        var min_y = parseFloat(self.min_value);
+        var max_y = parseFloat(self.max_value);
+        var num_format = new Intl.NumberFormat("en-US",
+            {"maximumFractionDigits":2});
+        // Draw y ticks and values
+        for (var val = min_y; val < max_y + spacing_y; val += spacing_y) {
+            y = self.tick_length + height * 
+                (1 - (val - self.min_value)/self.range);
+            c.font = self.tick_font_size + "px serif";
+            c.fillText(num_format.format(val), 0, y + self.tick_font_size/2,
+                self.x_padding - self.tick_length);
+            c.beginPath();
+            c.moveTo(self.x_padding - self.tick_length, y);
+            c.lineTo(self.x_padding, y);
+            c.stroke();
+        }
+        // Draw x ticks and values
+        var dx = (self.width - 2 * self.x_padding) /
+            (Object.keys(data).length - 1);
+        var x = self.x_padding + (barWidth*numOfBars)/2;
+        for (key in data) {
+            c.font = self.tick_font_size + "px serif";
+            c.fillText(key, x - self.tick_font_size/2 * (key.length - 0.5), 
+                self.height - self.y_padding +  self.tick_length +
+                self.tick_font_size, self.tick_font_size * (key.length - 0.5));
+            c.beginPath();
+            c.moveTo(x, self.height - self.y_padding + self.tick_length);
+            c.lineTo(x, self.height - self.y_padding);
+            c.stroke();
+            x += dx - barWidth/numOfBars;
+            
+        }
+    }
+
     /**
      * Draws a chart consisting of just x-y plots of points in data.
      */
@@ -200,28 +263,75 @@ function Chart(chart_id, data)
     {
         var counter = Object.keys(data)[0].length;
 
-        for(i = counter; i>=0; i--){
+            for(i = counter; i>=0; i--){
 
-        self.drawPointGraph(i);
+            self.drawPointGraph(i);
+            var c = context;
+            c.beginPath();
+            var x = self.x_padding;
+            var dx =  (self.width - 2*self.x_padding) /
+                (Object.keys(data).length - 1);
+            var height = self.height - self.y_padding  - self.tick_length;
+            c.moveTo(x, self.tick_length + height * (1 -
+                (data[self.start] - self.min_value)/self.range));
+            for (key in data) {
+                y = self.tick_length + height * 
+                    (1 - (data[key][i] - self.min_value)/self.range);
+                c.lineTo(x, y);
+                x += dx;
+
+            }
+            c.stroke();
+        }
+    }
+
+    /**
+    *Draws a histogram
+    */
+    p.drawHistogram = function(){
+
+        var barWidth = 10;
+       /* if(Object.keys.length >= 10){
+            barWidth = 8;
+        }else if(Object.keys.length >= 20){
+            barWidth = 6;
+        }*/
+        self.initMinMaxRange();
+        self.renderHistoGramAxes(barWidth, data[key].length);
+        var colors = [];
+        for(i = 0; i < data[key].length; i++){
+            colors[i] = p.changeColor();
+        }
         var c = context;
         c.beginPath();
-        var x = self.x_padding;
-        var dx =  (self.width - 2*self.x_padding) /
+        var dx = (self.width - 2*self.x_padding) /
             (Object.keys(data).length - 1);
-        var height = self.height - self.y_padding  - self.tick_length;
-        c.moveTo(x, self.tick_length + height * (1 -
-            (data[self.start] - self.min_value)/self.range));
+        var x = self.x_padding;
+        var height = self.height - self.y_padding;
         for (key in data) {
-            y = self.tick_length + height * 
-                (1 - (data[key][i] - self.min_value)/self.range);
-            c.lineTo(x, y);
+            var colorIndex = 0;
+            for(index in data[key]){
+                y = height * (1 - (data[key][index] - self.min_value)/self.range) + self.tick_length;
+                c.fillStyle = colors[colorIndex];
+                if(self.min_value != data[key][index]){
+                    c.fillRect(x,height,barWidth,y-height);
+                }else{
+                    c.fillRect(x,height,barWidth,1);
+                }
+                x = x + barWidth;
+                colorIndex ++;
+            }
+            //x = x - (barWidth/(data[key].length)*Object.keys(data).length)- barWidth*10/2;
+            x = x- barWidth*5 - (barWidth/(data[key].length));
+            console.log(x);
             x += dx;
-
         }
-        c.stroke();
-    }
+
     }
 
+    /**
+     * Change color of stroke and fill
+     */
     p.changeColor = function() {
         var letters = '0123456789ABCDEF';
         var color = '#';
