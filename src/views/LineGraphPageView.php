@@ -40,12 +40,13 @@ var data = '<?php echo $data["content"];?>';
 var json = JSON.parse(data);  
 for (var key in json) {
    for(var value in json[key]){
-        json[key][value] = parseInt(json[key][value]);
+        json[key][value] = parseFloat(json[key][value]);
    }
 }
 
 var graph = new Chart("board",
     json, 
+<<<<<<< HEAD
     {"title":"Test Chart - Month v Value"}); 
     var display = '<?php echo $data["display"];?>'
     if(display == "LineGraph")   
@@ -54,6 +55,11 @@ var graph = new Chart("board",
         var counter = Object.keys(data)[0].length;
         graph.drawPointGraph(counter);
 
+=======
+    {"title":"Test Chart - Month v Value"});
+//graph.draw("LineGraph");
+graph.draw("Histogram");
+>>>>>>> ea0e950cdfb7aa781e2c035052553e108a3156e9
 </script>
 <script type="text/javascript">
 </script>
