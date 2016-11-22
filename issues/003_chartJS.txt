@@ -1,4 +1,4 @@
-Assigned to: Kareem Darkazanli
+Assigned to: Kareem Darkazanli, Bao Pham
 Make the chart.js file working including histogram, line graphs, etc.
 
-In Progress
+Done

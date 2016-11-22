@@ -1,4 +1,6 @@
+<?xml version = "1.0" encoding = "utf-8"?>
 <!ELEMENT Chart (X-value*)>
+<!ATTLIST Chart Title CDATA #REQUIRED>
 <!ELEMENT X-value (Value+)>
 <!ATTLIST X-value Label CDATA #REQUIRED>
 <!ELEMENT Value (#PCDATA)>
